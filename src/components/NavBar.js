@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { useContext } from "react";
 import defaultUserImage from "../assets/img/defaultuserimage.png";
-import UserContext from "../contexts.js/Context";
+import UserContext from "../contexts/Context";
 
 export default function NavBar() {
   const { user } = useContext(UserContext);

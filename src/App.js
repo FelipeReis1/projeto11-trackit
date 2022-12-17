@@ -5,7 +5,7 @@ import RegistrationPage from "./components/RegistrationPage";
 import HabitsPage from "./components/HabitsPage";
 import TodayPage from "./components/TodayPage";
 import History from "./components/History";
-import UserContext from "../src/contexts.js/Context";
+import UserContext from "./contexts/Context";
 
 function App() {
   const [user, setUser] = useState({});

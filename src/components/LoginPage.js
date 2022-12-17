@@ -4,7 +4,7 @@ import { ThreeDots } from "react-loader-spinner";
 import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import logo from "../assets/img/logo.png";
-import UserContext from "../contexts.js/Context";
+import UserContext from "../contexts/Context";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
