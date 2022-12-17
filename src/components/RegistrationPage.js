@@ -67,7 +67,7 @@ export default function RegistrationPage() {
         />
         <input
           required
-          type="text"
+          type="url"
           placeholder="foto"
           value={image}
           onChange={(e) => setImage(e.target.value)}
