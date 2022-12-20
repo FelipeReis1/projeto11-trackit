@@ -45,11 +45,15 @@ export default function TodayPage() {
     <StyledContainer>
       <NavBar />
       <StyledHeader>
-        <h1>{dayjs().locale("pt-br").format("dddd, DD/MM")}</h1>
+        <h1 data-test="today">
+          {dayjs().locale("pt-br").format("dddd, DD/MM")}
+        </h1>
         {habits.length === 0 ? (
-          <h2>Nenhum hábito concluído ainda</h2>
+          <h2 data-test="today-counter">Nenhum hábito concluído ainda</h2>
         ) : (
-          <h3>{percentage.toFixed(0)}% dos hábitos concluídos</h3>
+          <h3 data-test="today-counter">
+            {percentage.toFixed(0)}% dos hábitos concluídos
+          </h3>
         )}
       </StyledHeader>
       {habits.map((h, index) => (

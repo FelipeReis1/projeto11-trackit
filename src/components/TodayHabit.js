@@ -59,15 +59,22 @@ export default function TodayHabit({ habits, setHabits }) {
     }
   }
   return (
-    <StyledHabitContainer>
-      <h1>{habits.name}</h1>
-      <StyledSequence currentSequenceColor={currentSequenceColor}>
+    <StyledHabitContainer data-test="today-habit-container">
+      <h1 data-test="today-habit-name">{habits.name}</h1>
+      <StyledSequence
+        data-test="today-habit-sequence"
+        currentSequenceColor={currentSequenceColor}
+      >
         <h2>Sequência atual: {habits.currentSequence} dias</h2>
       </StyledSequence>
-      <StyledRecord recordColor={recordColor}>
+      <StyledRecord data-test="today-habit-record" recordColor={recordColor}>
         <h3>Seu recorde: {habits.highestSequence} dias</h3>
       </StyledRecord>
-      <StyledButton onClick={check} habits={habits}>
+      <StyledButton
+        data-test="today-habit-check-btn"
+        onClick={check}
+        habits={habits}
+      >
         <img src={checkmark} alt={"Checkmark"} />
       </StyledButton>
     </StyledHabitContainer>

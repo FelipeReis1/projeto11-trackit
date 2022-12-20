@@ -72,8 +72,9 @@ export default function Habits({ handleTrigger, habitsLoader }) {
   }
   return (
     <StyledFormContainer>
-      <StyledForm onSubmit={sendHabit}>
+      <StyledForm data-test="habit-create-container" onSubmit={sendHabit}>
         <input
+          data-test="habit-name-input"
           required
           type="text"
           placeholder="nome do hábito"
@@ -84,6 +85,7 @@ export default function Habits({ handleTrigger, habitsLoader }) {
         <StyledDaysDiv>
           {weekDays.map((w, index) => (
             <StyledDays
+              data-test="habit-day"
               key={index}
               selectedDay={selectedDay.includes(index)}
               onClick={() => daySelector(index)}
@@ -93,9 +95,18 @@ export default function Habits({ handleTrigger, habitsLoader }) {
           ))}
         </StyledDaysDiv>
         <StyledOptions>
-          <p onClick={handleTrigger}> Cancelar</p>
+          <StyledCancelButton
+            data-test="habit-create-cancel-btn"
+            onClick={handleTrigger}
+          >
+            Cancelar
+          </StyledCancelButton>
           {!isLoading ? (
-            <StyledSaveButton type="submit" disabled={isLoading}>
+            <StyledSaveButton
+              data-test="habit-create-save-btn"
+              type="submit"
+              disabled={isLoading}
+            >
               Salvar
             </StyledSaveButton>
           ) : (
@@ -182,18 +193,20 @@ const StyledOptions = styled.div`
   align-items: center;
   margin-left: 135px;
   margin-bottom: 15px;
-  p {
-    font-family: "Lexend Deca";
-    font-style: normal;
-    font-weight: 400;
-    font-size: 16px;
-    line-height: 20px;
-    text-align: center;
-    color: #52b6ff;
-    margin-right: 23px;
-    &:hover {
-      cursor: pointer;
-    }
+`;
+const StyledCancelButton = styled.button`
+  font-family: "Lexend Deca";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  text-align: center;
+  color: #52b6ff;
+  margin-right: 10px;
+  background-color: #ffffff;
+  border-style: none;
+  &:hover {
+    cursor: pointer;
   }
 `;
 

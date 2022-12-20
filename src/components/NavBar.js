@@ -7,7 +7,7 @@ export default function NavBar() {
   const { user } = useContext(UserContext);
 
   return (
-    <StyledNavBarContainer>
+    <StyledNavBarContainer data-test="header">
       <Link style={{ textDecoration: "none" }} to="/">
         <h1>TrackIt</h1>
       </Link>

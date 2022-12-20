@@ -107,7 +107,7 @@ export default function HabitsPage() {
       <NavBar />
       <StyledTopContainer>
         <h1>Meus Hábitos</h1>
-        <button>
+        <button data-test="habit-create-btn">
           <p onClick={handleTrigger}>+</p>
         </button>
       </StyledTopContainer>
@@ -115,10 +115,11 @@ export default function HabitsPage() {
         <Habits handleTrigger={handleTrigger} habitsLoader={habitsLoader} />
       )}
       {habit.map((h) => (
-        <StyledHabitContainer key={h.id}>
+        <StyledHabitContainer data-test="habit-container" key={h.id}>
           <StyledHabit>
-            <h1>{h.name}</h1>
+            <h1 data-test="habit-name">{h.name}</h1>
             <img
+              data-test="habit-delete-btn"
               src={trashcan}
               alt={"Lixeira"}
               onClick={() => deleteHabit(h)}
@@ -126,7 +127,11 @@ export default function HabitsPage() {
           </StyledHabit>
           <StyledDaysDiv>
             {weekDays.map((w, index) => (
-              <StyledDays key={index} selectedDay={h.days.includes(index)}>
+              <StyledDays
+                data-test="habit-day"
+                key={index}
+                selectedDay={h.days.includes(index)}
+              >
                 <p>{w.name}</p>
               </StyledDays>
             ))}

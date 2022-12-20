@@ -8,11 +8,15 @@ import { useContext } from "react";
 export default function FooterMenu() {
   const { percentage } = useContext(UserContext);
   return (
-    <StyledContainer>
-      <Link to={"/habitos"} style={{ textDecoration: "none" }}>
+    <StyledContainer data-test="menu">
+      <Link
+        data-test="habit-link"
+        to={"/habitos"}
+        style={{ textDecoration: "none" }}
+      >
         <p>Hábitos</p>
       </Link>
-      <Link to={"/hoje"}>
+      <Link data-test="today-link" to={"/hoje"}>
         <StyledProgressBar>
           <CircularProgressbar
             text={"Hoje"}
@@ -29,7 +33,11 @@ export default function FooterMenu() {
         </StyledProgressBar>
       </Link>
 
-      <Link to={"/historico"} style={{ textDecoration: "none" }}>
+      <Link
+        data-test="history-link"
+        to={"/historico"}
+        style={{ textDecoration: "none" }}
+      >
         <p>Histórico</p>
       </Link>
     </StyledContainer>

@@ -13,8 +13,8 @@ export default function RegistrationPage() {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
 
-  function login(event) {
-    event.preventDefault();
+  function register(e) {
+    e.preventDefault();
     setIsLoading(true);
     const request = {
       email: email,
@@ -43,8 +43,9 @@ export default function RegistrationPage() {
   return (
     <StyledContainer>
       <StyledLogo src={logo} alt={"TrackIt"} />
-      <StyledForm onSubmit={login}>
+      <StyledForm onSubmit={register}>
         <input
+          data-test="email-input"
           required
           type="email"
           placeholder="email"
@@ -52,6 +53,7 @@ export default function RegistrationPage() {
           onChange={(e) => setEmail(e.target.value)}
         />
         <input
+          data-test="password-input"
           required
           type="password"
           placeholder="senha"
@@ -59,6 +61,7 @@ export default function RegistrationPage() {
           onChange={(e) => setPassword(e.target.value)}
         />
         <input
+          data-test="user-name-input"
           required
           type="text"
           placeholder="nome"
@@ -66,6 +69,7 @@ export default function RegistrationPage() {
           onChange={(e) => setName(e.target.value)}
         />
         <input
+          data-test="user-image-input"
           required
           type="url"
           placeholder="foto"
@@ -73,7 +77,11 @@ export default function RegistrationPage() {
           onChange={(e) => setImage(e.target.value)}
         />
         {!isLoading ? (
-          <StyledBottomButton type="submit" disabled={isLoading}>
+          <StyledBottomButton
+            data-test="signup-btn"
+            type="submit"
+            disabled={isLoading}
+          >
             Cadastrar
           </StyledBottomButton>
         ) : (
@@ -81,7 +89,7 @@ export default function RegistrationPage() {
             <ThreeDots color="#ffffff" />
           </StyledBottomButton>
         )}
-        <Link to={"/"}>
+        <Link data-test="login-link" to={"/"}>
           <p>Já tem uma conta? Faça login!</p>
         </Link>
       </StyledForm>

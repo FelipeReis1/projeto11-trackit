@@ -39,6 +39,7 @@ export default function LoginPage() {
       <StyledLogo src={logo} alt={"TrackIt"} />
       <StyledForm onSubmit={login}>
         <input
+          data-test="email-input"
           required
           type="email"
           placeholder="email"
@@ -46,6 +47,7 @@ export default function LoginPage() {
           onChange={(e) => setEmail(e.target.value)}
         />
         <input
+          data-test="password-input"
           required
           type="password"
           placeholder="senha"
@@ -53,7 +55,11 @@ export default function LoginPage() {
           onChange={(e) => setPassword(e.target.value)}
         />
         {!isLoading ? (
-          <StyledBottomButton type="submit" disabled={isLoading}>
+          <StyledBottomButton
+            data-test="login-btn"
+            type="submit"
+            disabled={isLoading}
+          >
             Entrar
           </StyledBottomButton>
         ) : (
@@ -61,7 +67,7 @@ export default function LoginPage() {
             <ThreeDots color="#ffffff" />
           </StyledBottomButton>
         )}
-        <Link to={"/cadastro"}>
+        <Link data-test="signup-link" to={"/cadastro"}>
           <p>Não tem uma conta? Cadastre-se</p>
         </Link>
       </StyledForm>
