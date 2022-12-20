@@ -6,7 +6,7 @@ import UserContext from "../contexts/Context";
 import { useContext } from "react";
 
 export default function FooterMenu() {
-  const { percentage } = useContext(UserContext);
+  const { percentage, habits } = useContext(UserContext);
   return (
     <StyledContainer data-test="menu">
       <Link
@@ -18,18 +18,33 @@ export default function FooterMenu() {
       </Link>
       <Link data-test="today-link" to={"/hoje"}>
         <StyledProgressBar>
-          <CircularProgressbar
-            text={"Hoje"}
-            value={percentage}
-            background={true}
-            backgroundPadding={5}
-            styles={buildStyles({
-              pathColor: "#ffffff",
-              backgroundColor: "#52B6FF",
-              trailColor: "#52B6FF",
-              textColor: "#ffffff",
-            })}
-          />
+          {habits.length === 0 ? (
+            <CircularProgressbar
+              text={"Hoje"}
+              value={0}
+              background={true}
+              backgroundPadding={5}
+              styles={buildStyles({
+                pathColor: "#ffffff",
+                backgroundColor: "#52B6FF",
+                trailColor: "#52B6FF",
+                textColor: "#ffffff",
+              })}
+            />
+          ) : (
+            <CircularProgressbar
+              text={"Hoje"}
+              value={percentage}
+              background={true}
+              backgroundPadding={5}
+              styles={buildStyles({
+                pathColor: "#ffffff",
+                backgroundColor: "#52B6FF",
+                trailColor: "#52B6FF",
+                textColor: "#ffffff",
+              })}
+            />
+          )}
         </StyledProgressBar>
       </Link>
 
