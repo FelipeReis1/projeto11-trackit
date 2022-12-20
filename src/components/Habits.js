@@ -52,7 +52,7 @@ export default function Habits({ handleTrigger, habitsLoader }) {
   function sendHabit(e) {
     e.preventDefault();
     setIsLoading(true);
-    const body = { name: habitName, days: selectedDay };
+    const request = { name: habitName, days: selectedDay };
     const config = {
       headers: {
         Authorization: `Bearer ${user.token}`,
@@ -60,7 +60,7 @@ export default function Habits({ handleTrigger, habitsLoader }) {
     };
     const promise = axios.post(
       "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits",
-      body,
+      request,
       config
     );
     promise.then(() => {

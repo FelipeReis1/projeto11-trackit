@@ -24,6 +24,12 @@ export default function TodayHabit({ habits, setHabits }) {
         setCurrentSequenceColor(true);
         if (habits.currentSequence === habits.highestSequence) {
           setRecordColor(true);
+        } else if (
+          habits.currentSequence === 0 &&
+          habits.highestSequence === 0
+        ) {
+          setCurrentSequenceColor(false);
+          setRecordColor(false);
         }
         const promise = axios.get(
           "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/today",
@@ -55,12 +61,12 @@ export default function TodayHabit({ habits, setHabits }) {
   return (
     <StyledHabitContainer>
       <h1>{habits.name}</h1>
-      <h2 currentSequenceColor={currentSequenceColor}>
-        Sequência atual: {habits.currentSequence} dias
-      </h2>
-      <h3 recordColor={recordColor}>
-        Seu recorde: {habits.highestSequence} dias
-      </h3>
+      <StyledSequence currentSequenceColor={currentSequenceColor}>
+        <h2>Sequência atual: {habits.currentSequence} dias</h2>
+      </StyledSequence>
+      <StyledRecord recordColor={recordColor}>
+        <h3>Seu recorde: {habits.highestSequence} dias</h3>
+      </StyledRecord>
       <StyledButton onClick={check} habits={habits}>
         <img src={checkmark} alt={"Checkmark"} />
       </StyledButton>
@@ -89,14 +95,15 @@ const StyledHabitContainer = styled.div`
     font-weight: 400;
     font-size: 13px;
     line-height: 16px;
-    color: ${(props) => (props.currentSequenceColor ? "#8FC549" : "#666666")};
+    color: ${(props) =>
+      props.currentSequenceColor ? "#8FC549" : "#666666"} !important;
   }
   h3 {
     font-family: "Lexend Deca";
     font-weight: 400;
     font-size: 13px;
     line-height: 16px;
-    color: ${(props) => (props.recordColor ? "#8FC549" : "#666666")};
+    color: ${(props) => (props.recordColor ? "#8FC549" : "#666666")} !important;
   }
 `;
 const StyledButton = styled.button`
@@ -114,5 +121,24 @@ const StyledButton = styled.button`
   img {
     width: 35px;
     height: 28px;
+  }
+`;
+const StyledSequence = styled.div`
+  h2 {
+    font-family: "Lexend Deca";
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+    color: ${(props) =>
+      props.currentSequenceColor ? "#8FC549" : "#666666"} !important;
+  }
+`;
+const StyledRecord = styled.div`
+  h3 {
+    font-family: "Lexend Deca";
+    font-weight: 400;
+    font-size: 13px;
+    line-height: 16px;
+    color: ${(props) => (props.recordColor ? "#8FC549" : "#666666")} !important;
   }
 `;

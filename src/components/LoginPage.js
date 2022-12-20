@@ -13,8 +13,8 @@ export default function LoginPage() {
   const { setUser } = useContext(UserContext);
   const navigate = useNavigate();
 
-  function login(event) {
-    event.preventDefault();
+  function login(e) {
+    e.preventDefault();
     setIsLoading(true);
     const request = {
       email: email,
