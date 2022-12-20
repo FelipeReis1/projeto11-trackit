@@ -126,7 +126,7 @@ export default function HabitsPage() {
           </StyledHabit>
           <StyledDaysDiv>
             {weekDays.map((w, index) => (
-              <StyledDays selectedDay={h.days.includes(index)}>
+              <StyledDays key={index} selectedDay={h.days.includes(index)}>
                 <p>{w.name}</p>
               </StyledDays>
             ))}
@@ -154,6 +154,7 @@ const StyledContainer = styled.div`
   justify-content: flex-start;
   align-items: center;
   margin-top: 70px;
+  margin-bottom: 70px;
   background-color: #e5e5e5;
 `;
 const StyledTopContainer = styled.div`

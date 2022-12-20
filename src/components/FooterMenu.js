@@ -2,8 +2,11 @@ import styled from "styled-components";
 import { buildStyles, CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
 import { Link } from "react-router-dom";
+import UserContext from "../contexts/Context";
+import { useContext } from "react";
 
 export default function FooterMenu() {
+  const { percentage } = useContext(UserContext);
   return (
     <StyledContainer>
       <Link to={"/habitos"} style={{ textDecoration: "none" }}>
@@ -13,7 +16,7 @@ export default function FooterMenu() {
         <StyledProgressBar>
           <CircularProgressbar
             text={"Hoje"}
-            value={66}
+            value={percentage}
             background={true}
             backgroundPadding={5}
             styles={buildStyles({
@@ -42,6 +45,7 @@ const StyledContainer = styled.div`
   position: fixed;
   bottom: 0px;
   background-color: #ffffff;
+  z-index: 2;
   p {
     height: 22px;
     font-family: "Lexend Deca";

@@ -9,7 +9,16 @@ import UserContext from "./contexts/Context";
 
 function App() {
   const [user, setUser] = useState({});
-  const contextValue = { user, setUser };
+  const [habits, setHabits] = useState([]);
+  let [percentage] = useState(0);
+  let sum = 0;
+  for (let i = 0; i < habits.length; i++) {
+    if (habits[i].done) {
+      sum++;
+    }
+  }
+  percentage = (sum * 100) / habits.length;
+  const contextValue = { user, setUser, habits, setHabits, percentage };
   return (
     <UserContext.Provider value={contextValue}>
       <BrowserRouter>
