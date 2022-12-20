@@ -107,8 +107,8 @@ export default function HabitsPage() {
       <NavBar />
       <StyledTopContainer>
         <h1>Meus Hábitos</h1>
-        <button data-test="habit-create-btn">
-          <p onClick={handleTrigger}>+</p>
+        <button onClick={handleTrigger} data-test="habit-create-btn">
+          <p>+</p>
         </button>
       </StyledTopContainer>
       {trigger && (

@@ -52,6 +52,9 @@ export default function Habits({ handleTrigger, habitsLoader }) {
   function sendHabit(e) {
     e.preventDefault();
     setIsLoading(true);
+    if (habitName === "") {
+      alert("Você deve digitar um nome para o hábito!");
+    }
     const request = { name: habitName, days: selectedDay };
     const config = {
       headers: {
@@ -126,7 +129,7 @@ const StyledFormContainer = styled.div`
   margin-top: 20px;
 `;
 
-const StyledForm = styled.form`
+const StyledForm = styled.div`
   width: 90%;
   display: flex;
   justify-content: center;

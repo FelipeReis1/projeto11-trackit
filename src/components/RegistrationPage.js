@@ -45,6 +45,7 @@ export default function RegistrationPage() {
       <StyledLogo src={logo} alt={"TrackIt"} />
       <StyledForm onSubmit={register}>
         <input
+          disabled={isLoading}
           data-test="email-input"
           required
           type="email"
@@ -85,7 +86,7 @@ export default function RegistrationPage() {
             Cadastrar
           </StyledBottomButton>
         ) : (
-          <StyledBottomButton disabled={isLoading}>
+          <StyledBottomButton data-test="signup-btn" disabled={isLoading}>
             <ThreeDots color="#ffffff" />
           </StyledBottomButton>
         )}

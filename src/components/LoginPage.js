@@ -38,22 +38,48 @@ export default function LoginPage() {
     <StyledContainer>
       <StyledLogo src={logo} alt={"TrackIt"} />
       <StyledForm onSubmit={login}>
-        <input
-          data-test="email-input"
-          required
-          type="email"
-          placeholder="email"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <input
-          data-test="password-input"
-          required
-          type="password"
-          placeholder="senha"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+        {!isLoading ? (
+          <input
+            disabled={isLoading}
+            data-test="email-input"
+            required
+            type="email"
+            placeholder="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        ) : (
+          <input
+            disabled={isLoading}
+            data-test="email-input"
+            required
+            type="email"
+            placeholder="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        )}
+        {!isLoading ? (
+          <input
+            disabled={isLoading}
+            data-test="password-input"
+            required
+            type="password"
+            placeholder="senha"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        ) : (
+          <input
+            disabled={isLoading}
+            data-test="password-input"
+            required
+            type="password"
+            placeholder="senha"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        )}
         {!isLoading ? (
           <StyledBottomButton
             data-test="login-btn"
@@ -63,7 +89,7 @@ export default function LoginPage() {
             Entrar
           </StyledBottomButton>
         ) : (
-          <StyledBottomButton disabled={isLoading}>
+          <StyledBottomButton data-test="login-btn" disabled={isLoading}>
             <ThreeDots color="#ffffff" />
           </StyledBottomButton>
         )}
@@ -104,6 +130,7 @@ const StyledForm = styled.form`
     border-radius: 5px;
     background-color: #ffffff;
     margin-bottom: 6px;
+    opacity: ${(props) => (!props.disabled ? "1" : "0.7")};
     &::placeholder {
       font-family: "Lexend Deca";
       font-style: normal;
