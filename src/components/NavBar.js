@@ -1,15 +1,17 @@
 import styled from "styled-components";
 import { useContext } from "react";
-import defaultUserImage from "../assets/img/defaultuserimage.png";
 import UserContext from "../contexts/Context";
+import { Link } from "react-router-dom";
 
 export default function NavBar() {
   const { user } = useContext(UserContext);
 
   return (
     <StyledNavBarContainer>
-      <h1>TrackIt</h1>
-      <img src={user.image} alt={defaultUserImage} />
+      <Link style={{ textDecoration: "none" }} to="/">
+        <h1>TrackIt</h1>
+      </Link>
+      <img src={user.image} alt="UserImage" />
     </StyledNavBarContainer>
   );
 }
