@@ -113,7 +113,10 @@ export default function Habits({ handleTrigger, habitsLoader }) {
               Salvar
             </StyledSaveButton>
           ) : (
-            <StyledSaveButton disabled={isLoading}>
+            <StyledSaveButton
+              data-test="habit-create-save-btn"
+              disabled={isLoading}
+            >
               <ThreeDots width={60} color="#ffffff" />
             </StyledSaveButton>
           )}

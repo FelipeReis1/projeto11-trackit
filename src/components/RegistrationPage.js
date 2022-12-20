@@ -54,6 +54,7 @@ export default function RegistrationPage() {
           onChange={(e) => setEmail(e.target.value)}
         />
         <input
+          disabled={isLoading}
           data-test="password-input"
           required
           type="password"
@@ -62,6 +63,7 @@ export default function RegistrationPage() {
           onChange={(e) => setPassword(e.target.value)}
         />
         <input
+          disabled={isLoading}
           data-test="user-name-input"
           required
           type="text"
@@ -70,6 +72,7 @@ export default function RegistrationPage() {
           onChange={(e) => setName(e.target.value)}
         />
         <input
+          disabled={isLoading}
           data-test="user-image-input"
           required
           type="url"
