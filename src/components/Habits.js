@@ -132,7 +132,7 @@ const StyledFormContainer = styled.div`
   margin-top: 20px;
 `;
 
-const StyledForm = styled.div`
+const StyledForm = styled.form`
   width: 90%;
   display: flex;
   justify-content: center;
